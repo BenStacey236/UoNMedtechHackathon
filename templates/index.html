@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Sync - AI Triage System</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='get-location.js') }}"></script>
+
+</head>
+<body>
+    <main>
+        <div class="form-container">
+            <form class="form" action="/" method="POST">
+              <div class="form-group">
+                <label for="email">Age</label>
+                <input type="text" id="email" name="age" required="">
+              </div>
+              <div class="form-group">
+                <label for="textarea">What are your symptoms?</label>
+                <textarea name="symptoms" id="textarea" rows="10" cols="50" required="">          </textarea>
+              </div>
+              <button class="form-submit-btn" type="submit">Submit</button>
+            </form>
+          </div>
+
+      {% if triage_result %}
+          <h3>Triage Result:</h3>
+          <p>{{ triage_result }}</p>
+      {% endif %}
+      
+      {% if error %}
+          <p style="color: red;">{{ error }}</p>
+      {% endif %}
+
+      <button id="getHospitalsBtn">Find Nearest Hospitals</button>
+      <ul id="hospitalsList"></ul>
+
+        
+    </main>
+</body>
+</html>
