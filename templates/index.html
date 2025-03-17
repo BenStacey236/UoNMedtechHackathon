@@ -6,10 +6,12 @@
     <title>Symptom Sync - AI Triage System</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <script src="{{ url_for('static', filename='get-location.js') }}"></script>
+    <link href="{{ url_for('static', filename='logo.webp') }}" rel="icon">
 
 </head>
 <body>
     <main>
+        <img src="{{ url_for('static', filename='logo.webp') }}" class="logo-image">
         <div class="form-container">
             <form class="form" action="/" method="POST">
               <div class="form-group">
@@ -18,15 +20,17 @@
               </div>
               <div class="form-group">
                 <label for="textarea">What are your symptoms?</label>
-                <textarea name="symptoms" id="textarea" rows="10" cols="50" required="">          </textarea>
+                <textarea name="symptoms" id="textarea" rows="10" cols="50" required=""></textarea>
               </div>
               <button class="form-submit-btn" type="submit">Submit</button>
             </form>
           </div>
 
       {% if triage_result %}
-          <h3>Triage Result:</h3>
-          <p>{{ triage_result }}</p>
+          <div class="triage-result">
+            <h3>Triage Result:</h3>
+            <p>{{ triage_result }}</p>
+          </div>    
       {% endif %}
       
       {% if error %}
